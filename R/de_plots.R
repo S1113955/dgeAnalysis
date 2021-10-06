@@ -387,8 +387,8 @@ voomPlot <- function(dge, sourceId) {
 #' @export
 
 multidimensionalScalingPlot <- function(dge, color, sourceId) {
-  logFC <- plotMDS(dge$counts, ndim = ncol(dge) - 1)
-  for_plots <- data.frame(logFC$cmdscale.out)
+  logFC <- plotMDS(dge$counts)
+  for_plots <- data.frame(logFC$eigen.vectors)
   for_plots$group <- dge$samples[, color]
   
   p <- plot_ly(
